@@ -30,13 +30,75 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Explain how to build stateful class components.
 
+ A stateful component is dependent on it's state object and can change it's own state. The component re-renders based on changes to it's state, and may pass down properties of it's state to child components as properties on a props object.
+
 2. Describe the different phases of the component lifecycle.
+
+Mounting: When the component is initially created, it gets mounted onto the DOM.
+Updating: Whenever a component’s state or props are changed, it gets re-rendered on the page.
+Unmounting: compontent is removed.
 
 3. Demonstrate an understanding of class component lifecycle methods.
 
+Mounting: constructor()
+
+    Called first and only once when the page loads
+    Used to set initial state
+
+static getDerivedStateFromProps(nextProps, prevState)
+
+    Called right before the initial render and all re-renders
+    Rarely used
+
+render()
+
+    This is the only required method in a class component.
+    Called every time React updates and commits to the DOM
+    Used for writing JSX for components
+
+componentDidMount()
+
+    Called once when component is constructed and gets added to the DOM (right after render).
+    Could be used to fetch data and have it displayed right after rendering is done
+
+Updating: static getDerivedStateFromProps(nextProps, prevState)
+
+    Called before every render
+    Rarely used — copy props into state
+
+shouldComponentUpdate(nextProps, nextState)
+
+    Returns a boolean — default is set to true
+    Runs immediately before render or when new props and/or state is received by the component.
+    Called before every re-render but not initially
+    Could be used to stop unnecessary re-renders for performance optimization
+
+render()
+
+    This is the only required method in a class component.
+    For updates, render() will not be invoked if shouldComponentUpdate() returns false.
+
+getSnapshotBeforeUpdate(prevProps, prevState)
+
+    This method is to allow us to capture some properties that are not stored in the state before we render that component. (i.e. if user scrolled to a specific location on the page and you want to store the position and use it later)
+    Called just before React updates and commits new content to the DOM
+    Rarely used but can capture data that may be changing rapidly
+
+componentDidUpdate(previousProps, previousState, snapshot)
+
+    Called just after a re-render has finished
+    Used for any DOM updates following a render
+
+Unmounting: componentWilUnMount()
+  This results in losing the state.
+
 4. Define stateful logic.
 
+ Stateful logic is any code that uses state.
+
 5. Describe how to test a React component with React Testing Library.
+
+really broad / vague question... Are we talking the whole "arrange, act, assert" thing?
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
